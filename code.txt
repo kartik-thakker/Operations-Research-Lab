@@ -1,0 +1,23 @@
+/*********************************************
+ * OPL 12.5 Model
+ * Author: User
+ * Creation Date: 14-Feb-2019 at 2:15:01 PM
+ *********************************************/
+dvar boolean x[1..4][1..4];
+
+int site=4;
+range N=1..site;
+int flow[1..4][1..4]=[[0,5,2,0],[0,0,2,3],[3,4,0,0],[0,0,5,0]];
+
+int dist[1..4][1..4]=[[0,5,10,4],[4,0,6,7],[8,5,0,5],[6,6,5,0]];
+
+dexpr float z=sum(i in N, j in N, k in N, l in N)flow[i][j]*dist[k][l]*x[i][k]*x[j][l];
+
+
+minimize z;
+subject to
+{
+  forall(i in N)sum(k in N)x[i][k]==1;
+  forall(k in N)sum(i in N)x[i][k]==1;
+}  
+  

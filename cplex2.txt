@@ -1,0 +1,14 @@
+dvar int+ x1;
+dvar float+ x2;
+dvar int+ x3;
+
+dexpr float z= 9000*x1+1500*x2+1000*x3;
+
+maximize z ;
+
+subject to{
+	C1: 50000*x1+12000*x2+8000*x3<=250000;
+	C2: x1<=4;
+	C3: x2<=15;
+	C4: x3<=20;
+	}

@@ -1,0 +1,15 @@
+/*********************************************
+ * OPL 12.5 Data
+ * Author: User
+ * Creation Date: 31-Jan-2019 at 3:59:30 PM
+ *********************************************/
+SheetConnection mysheet("E:\\OR2\\machining.xlsx");
+
+machines from SheetRead(mysheet,"F3");
+
+jobs from SheetRead(mysheet,"F4");
+
+plantcapacity from SheetRead(mysheet,"E13:I13");
+demands from SheetRead(mysheet,"K7:K11");
+c from SheetRead(mysheet,"E7:I11");
+x to SheetWrite(mysheet,"M7:Q11");

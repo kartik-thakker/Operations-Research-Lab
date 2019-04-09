@@ -1,0 +1,21 @@
+int machines=...;
+int jobs=...;
+
+range M=1..machines;
+range J=1..jobs;
+
+int plantcapacity[M]=...;
+int demands[J]=...;
+
+int c[M][J]=...;
+
+dvar boolean x[M][J];
+
+dexpr float TC=sum(i in M, j in J)c[i][j]*x[i][j];
+
+minimize TC;
+
+subject to{
+	supply: forall(i in M)sum(j in J)x[i][j]<=plantcapacity[i];
+	demand: forall(j in J)sum(i in M)x[i][j]>=demands[j];
+	}	

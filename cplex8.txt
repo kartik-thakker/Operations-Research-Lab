@@ -1,0 +1,27 @@
+/*********************************************
+ * OPL 12.5 Model
+ * Author: User
+ * Creation Date: 31-Jan-2019 at 3:22:00 PM
+ *********************************************/
+int plants=...;
+int DC=...;
+
+range P=1..plants;
+range D=1..DC;
+
+int plantcapacity[P]=...;
+int demands[D]=...;
+
+int c[P][D]=...;
+
+dvar float+ x[P][D];
+
+dexpr float TC=sum(i in P, j in D)c[i][j]*x[i][j];
+
+minimize TC;
+
+subject to{
+	supply: forall(i in P)sum(j in D)x[i][j]<=plantcapacity[i];
+	demand: forall(j in D)sum(i in P)x[i][j]>=demands[j];
+	}
+  

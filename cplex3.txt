@@ -1,0 +1,11 @@
+dvar int+ x1;
+dvar int+ x2;
+
+dexpr float z= 8*x1+5*x2;
+
+maximize z ;
+
+subject to{
+	C1: 9*x1+5*x2<=45;
+	C2: x1+x2<=6;
+	}
